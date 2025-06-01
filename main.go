@@ -28,10 +28,9 @@ type model struct {
 }
 
 type command_args struct {
-	filename     string
-	file_type    string
-	delimiter    rune
-	table_height int
+	filename  string
+	file_type string
+	delimiter rune
 }
 
 func (m model) Init() tea.Cmd { return nil }
@@ -194,7 +193,6 @@ func parseArgs() command_args {
 
 	fileTypePtr := flag.String("file_type", "auto", "force specific filetype, values: 'excel' or 'csv'")
 	delimiterPtr := flag.String("delimiter", "auto", "char delimiter for when parsing csv, like ',' or ';'")
-	heightPtr := flag.Int("height", 20, "max height for the table in rows")
 
 	flag.Parse()
 
@@ -224,10 +222,9 @@ func parseArgs() command_args {
 	}
 
 	return command_args{
-		filename:     filename,
-		file_type:    *fileTypePtr,
-		table_height: *heightPtr,
-		delimiter:    delimiter,
+		filename:  filename,
+		file_type: *fileTypePtr,
+		delimiter: delimiter,
 	}
 }
 
